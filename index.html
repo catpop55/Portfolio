@@ -3,17 +3,112 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Portfolio de Catalin Mihai Pop</title>
+    <meta name="description" content="Portfolio de Catalin Mihai Pop, desarrollador web en formación.">
+    <title>Catalin Mihai Pop | Desarrollador web</title>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
     <header>
-      <h1>Catalin Mihai Pop</h1>
-      <p>Desarrollo de Aplicaciones Web (DAW)</p>
-      <a href="https://github.com/catpop55/Portfolio">Repositorio del portfolio</a>
+      <div class="container nav">
+        <a class="logo" href="#inicio">CMP<span>.</span></a>
+        <nav aria-label="Navegación principal">
+          <a href="#sobre-mi">Sobre mí</a>
+          <a href="#lenguajes">Lenguajes</a>
+          <a href="#proyectos">Proyectos</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+      </div>
     </header>
 
-    <p>Documento inicial para verificar la automatización del despliegue continuo.</p>
-    <p>Hola que tal</p>
+    <main>
+      <section class="container hero" id="inicio">
+        <div>
+          <span class="eyebrow">Desarrollador web en formación</span>
+          <h1>Ideas que se convierten en <em>experiencias digitales.</em></h1>
+          <p class="hero-copy">Soy Catalin Mihai Pop, estudiante de Desarrollo de Aplicaciones Web. Me interesa crear productos claros, útiles y bien construidos.</p>
+          <div class="actions">
+            <a class="button primary" href="#proyectos">Ver proyectos <span aria-hidden="true">&nbsp;↗</span></a>
+            <a class="button secondary" href="https://github.com/catpop55/Portfolio" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">&nbsp;↗</span></a>
+          </div>
+        </div>
+        <div class="hero-card" aria-label="Retrato de Catalin Mihai Pop">
+          <img class="profile-image" src="img/Foto_Portfolio.png" alt="Retrato de Catalin Mihai Pop">
+          <div class="profile-caption">
+            <span class="availability">Disponible para aprender y colaborar</span>
+            <span class="profile-role">Desarrollo web · DAW</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="container" id="sobre-mi">
+        <div class="section-heading">
+          <div><span class="eyebrow">01 / Sobre mí</span><h2>Construyendo una base sólida.</h2></div>
+          <p>Cada proyecto es una oportunidad para aprender algo nuevo y hacerlo mejor.</p>
+        </div>
+        <div class="about-grid">
+          <p>Actualmente estoy formándome en el desarrollo de aplicaciones web y explorando todo el proceso: desde estructurar una idea hasta convertirla en una interfaz funcional, accesible y agradable de usar.</p>
+          <div class="facts">
+            <div class="fact"><strong>DAW</strong><span>Formación actual</span></div>
+            <div class="fact"><strong>∞</strong><span>Ganas de aprender</span></div>
+            <div class="fact"><strong>HTML</strong><span>Mi punto de partida</span></div>
+            <div class="fact"><strong>Git</strong><span>Trabajo ordenado</span></div>
+          </div>
+        </div>
+        <div class="skills" aria-label="Tecnologías">
+          <span class="skill">HTML5</span><span class="skill">CSS3</span><span class="skill">JavaScript</span><span class="skill">Git & GitHub</span><span class="skill">Responsive design</span>
+        </div>
+      </section>
+
+      <section id="lenguajes">
+        <div class="container">
+          <div class="section-heading">
+            <div><span class="eyebrow">02 / Lenguajes</span><h2>Herramientas para crear.</h2></div>
+            <p>Estos son los lenguajes de programación con los que he trabajado durante mi formación.</p>
+          </div>
+          <div class="languages">
+            <article class="language-card">
+              <div class="language-icon java-icon" aria-hidden="true">J</div>
+              <div>
+                <h3>Java</h3>
+                <p>Programación orientada a objetos y desarrollo de aplicaciones con una base sólida y estructurada.</p>
+              </div>
+              <span class="language-number">01</span>
+            </article>
+            <article class="language-card">
+              <div class="language-icon php-icon" aria-hidden="true">php</div>
+              <div>
+                <h3>PHP</h3>
+                <p>Desarrollo del lado del servidor para crear aplicaciones web dinámicas y conectadas a datos.</p>
+              </div>
+              <span class="language-number">02</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="proyectos">
+        <div class="container">
+          <div class="section-heading">
+            <div><span class="eyebrow">03 / Proyectos</span><h2>En proceso de creación.</h2></div>
+            <p>Una selección de trabajos y ejercicios que irán creciendo conmigo.</p>
+          </div>
+          <div class="projects">
+            <article class="project"><span class="project-number">01 —</span><h3>Portfolio personal</h3><p>Un espacio para mostrar mi evolución, mis intereses y los proyectos que vaya desarrollando.</p><div class="tags"><span>HTML</span><span>CSS</span><span>GitHub Pages</span></div></article>
+            <article class="project"><span class="project-number">02 —</span><h3>Próximo proyecto</h3><p>Una nueva idea está tomando forma. Aquí podrás descubrirla muy pronto.</p><div class="tags"><span>En desarrollo</span></div></article>
+            <article class="project"><span class="project-number">03 —</span><h3>Próximo proyecto</h3><p>Experimentar, probar y compartir: el siguiente reto empieza aquí.</p><div class="tags"><span>En desarrollo</span></div></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="container contact" id="contacto">
+        <div><span class="eyebrow">04 / Contacto</span><h2>¿Hablamos de una idea?</h2></div>
+        <div><p>Estoy abierto a conocer gente, aprender de nuevos retos y colaborar en proyectos interesantes.</p><a class="button primary" href="https://github.com/catpop55/Portfolio" target="_blank" rel="noreferrer">Visitar GitHub <span aria-hidden="true">&nbsp;↗</span></a></div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner"><span>© 2026 Catalin Mihai Pop</span><span>Hecho con curiosidad <3</span></div>
+    </footer>
+    <script src="script.js"></script>
   </body>
 </html>
-
