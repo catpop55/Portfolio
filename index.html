@@ -3,112 +3,194 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Portfolio de Catalin Mihai Pop, desarrollador web en formación.">
-    <title>Catalin Mihai Pop | Desarrollador web</title>
+    <title>Catalin Mihai Pop | Desarrollador de aplicaciones web</title>
+    <meta name="description" content="Catalin Mihai Pop, desarrollador de aplicaciones web junior (DAW). Java, PHP, JavaScript, HTML y CSS. Disponible para prácticas y primer empleo.">
+    <meta name="author" content="Catalin Mihai Pop">
+    <meta name="theme-color" content="#0c1110">
+    <link rel="canonical" href="https://catpop55.github.io/Portfolio/">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='40' height='40' rx='10' fill='%230c1110'/%3E%3Crect x='1.5' y='1.5' width='37' height='37' rx='10' fill='none' stroke='%23b8f36b' stroke-width='2'/%3E%3Cg fill='none' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M19.4 15.5A7 7 0 1 0 19.4 24.5' stroke='%23f1f5f2'/%3E%3Cpath d='M24.5 28V12h3.5a4.5 4.5 0 0 1 0 9h-3.5' stroke='%23b8f36b'/%3E%3C/g%3E%3C/svg%3E">
+
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_ES">
+    <meta property="og:title" content="Catalin Mihai Pop | Desarrollador de aplicaciones web">
+    <meta property="og:description" content="Desarrollador web junior (DAW) con Java, PHP y JavaScript. Disponible para prácticas y primer empleo.">
+    <meta property="og:url" content="https://catpop55.github.io/Portfolio/">
+    <meta property="og:image" content="https://catpop55.github.io/Portfolio/img/Foto_Portfolio.png">
+    <meta name="twitter:card" content="summary">
+
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+    <script type="module" src="three-scene.js"></script>
   </head>
   <body>
+    <canvas class="bg-3d" aria-hidden="true"></canvas>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
     <header>
       <div class="container nav">
-        <a class="logo" href="#inicio">CMP<span>.</span></a>
-        <nav aria-label="Navegación principal">
+        <a class="logo" href="#inicio" aria-label="Catalin Mihai Pop, ir al inicio">
+          <svg class="logo-mark" viewBox="0 0 40 40" width="38" height="38" fill="none" aria-hidden="true">
+            <rect class="logo-frame" x="1.5" y="1.5" width="37" height="37" rx="10"/>
+            <path class="logo-c" d="M19.4 15.5A7 7 0 1 0 19.4 24.5"/>
+            <path class="logo-p" d="M24.5 28V12h3.5a4.5 4.5 0 0 1 0 9h-3.5"/>
+          </svg>
+          <span class="logo-text">Catalin Pop<small>Desarrollador web</small></span>
+        </a>
+        <nav id="menu" aria-label="Navegación principal">
           <a href="#sobre-mi">Sobre mí</a>
-          <a href="#lenguajes">Lenguajes</a>
+          <a href="#tecnologias">Tecnologías</a>
+          <a href="#formacion">Formación</a>
           <a href="#proyectos">Proyectos</a>
           <a href="#contacto">Contacto</a>
         </nav>
+        <div class="nav-actions">
+          <button class="theme-toggle" type="button" aria-label="Cambiar a tema claro" aria-pressed="false">☼</button>
+          <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+        </div>
       </div>
+      <div class="scroll-progress" aria-hidden="true"></div>
     </header>
 
-    <main>
+    <main id="contenido">
       <section class="container hero" id="inicio">
         <div>
-          <span class="eyebrow">Desarrollador web en formación</span>
-          <h1>Ideas que se convierten en <em>experiencias digitales.</em></h1>
-          <p class="hero-copy">Soy Catalin Mihai Pop, estudiante de Desarrollo de Aplicaciones Web. Me interesa crear productos claros, útiles y bien construidos.</p>
+          <span class="eyebrow">Desarrollador de aplicaciones web · Junior</span>
+          <h1>Catalin Mihai Pop Petrovan</h1>
+          <p class="hero-role">Desarrollo aplicaciones web con <strong>Java</strong>, <strong>PHP</strong> y <strong>JavaScript</strong>.</p>
+          <p class="hero-copy">Estudiante de 2.º curso de Desarrollo de Aplicaciones Web (CFGS). Busco unas prácticas o un primer empleo donde aportar, trabajar en equipo y seguir creciendo como desarrollador.</p>
           <div class="actions">
-            <a class="button primary" href="#proyectos">Ver proyectos <span aria-hidden="true">&nbsp;↗</span></a>
-            <a class="button secondary" href="https://github.com/catpop55/Portfolio" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">&nbsp;↗</span></a>
+            <a class="button primary" href="#contacto">Contactar</a>
+            <a class="button secondary" href="#proyectos">Ver proyectos</a>
+            <a class="button secondary" href="https://github.com/catpop55" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
           </div>
         </div>
-        <div class="hero-card" aria-label="Retrato de Catalin Mihai Pop">
-          <img class="profile-image" src="img/Foto_Portfolio.png" alt="Retrato de Catalin Mihai Pop">
-          <div class="profile-caption">
-            <span class="availability">Disponible para aprender y colaborar</span>
-            <span class="profile-role">Desarrollo web · DAW</span>
-          </div>
+        <div class="hero-visual">
+          <figure class="hero-card">
+            <img class="profile-image" src="img/Foto_Portfolio.png" alt="Retrato de Catalin Mihai Pop" width="600" height="470" fetchpriority="high">
+            <figcaption class="profile-caption">
+              <span class="availability">Disponible para prácticas y primer empleo</span>
+              <span class="profile-role">Desarrollo web · DAW</span>
+            </figcaption>
+          </figure>
         </div>
       </section>
 
-      <section class="container" id="sobre-mi">
+      <section class="container reveal" id="sobre-mi">
         <div class="section-heading">
-          <div><span class="eyebrow">01 / Sobre mí</span><h2>Construyendo una base sólida.</h2></div>
-          <p>Cada proyecto es una oportunidad para aprender algo nuevo y hacerlo mejor.</p>
+          <div><span class="eyebrow">01 / Sobre mí</span><h2>Perfil profesional</h2></div>
         </div>
         <div class="about-grid">
-          <p>Actualmente estoy formándome en el desarrollo de aplicaciones web y explorando todo el proceso: desde estructurar una idea hasta convertirla en una interfaz funcional, accesible y agradable de usar.</p>
-          <div class="facts">
-            <div class="fact"><strong>DAW</strong><span>Formación actual</span></div>
-            <div class="fact"><strong>∞</strong><span>Ganas de aprender</span></div>
-            <div class="fact"><strong>HTML</strong><span>Mi punto de partida</span></div>
-            <div class="fact"><strong>Git</strong><span>Trabajo ordenado</span></div>
+          <div class="about-text">
+            <p>Estoy cursando el ciclo superior de Desarrollo de Aplicaciones Web, donde trabajo con programación orientada a objetos en Java, desarrollo del lado del servidor con PHP y desarrollo del lado del cliente con HTML, CSS y JavaScript.</p>
+            <p>Uso Git y GitHub en mis proyectos, con ramas, pull requests y despliegue automático con GitHub Actions. Me importa que el código sea ordenado, que la interfaz sea accesible y que el resultado funcione bien en cualquier dispositivo.</p>
           </div>
-        </div>
-        <div class="skills" aria-label="Tecnologías">
-          <span class="skill">HTML5</span><span class="skill">CSS3</span><span class="skill">JavaScript</span><span class="skill">Git & GitHub</span><span class="skill">Responsive design</span>
-        </div>
-      </section>
-
-      <section id="lenguajes">
-        <div class="container">
-          <div class="section-heading">
-            <div><span class="eyebrow">02 / Lenguajes</span><h2>Herramientas para crear.</h2></div>
-            <p>Estos son los lenguajes de programación con los que he trabajado durante mi formación.</p>
-          </div>
-          <div class="languages">
-            <article class="language-card">
-              <div class="language-icon java-icon" aria-hidden="true">J</div>
-              <div>
-                <h3>Java</h3>
-                <p>Programación orientada a objetos y desarrollo de aplicaciones con una base sólida y estructurada.</p>
-              </div>
-              <span class="language-number">01</span>
-            </article>
-            <article class="language-card">
-              <div class="language-icon php-icon" aria-hidden="true">php</div>
-              <div>
-                <h3>PHP</h3>
-                <p>Desarrollo del lado del servidor para crear aplicaciones web dinámicas y conectadas a datos.</p>
-              </div>
-              <span class="language-number">02</span>
-            </article>
-          </div>
+          <dl class="facts">
+            <div class="fact"><dt>Formación</dt><dd>CFGS Desarrollo de Aplicaciones Web (2.º curso)</dd></div>
+            <div class="fact"><dt>Enfoque</dt><dd>Desarrollo web full stack junior</dd></div>
+            <div class="fact"><dt>Control de versiones</dt><dd>Git y GitHub (ramas, PR, Actions)</dd></div>
+            <div class="fact"><dt>Disponibilidad</dt><dd>Prácticas o primer empleo</dd></div>
+          </dl>
         </div>
       </section>
 
-      <section id="proyectos">
+      <section id="tecnologias" class="reveal">
         <div class="container">
           <div class="section-heading">
-            <div><span class="eyebrow">03 / Proyectos</span><h2>En proceso de creación.</h2></div>
-            <p>Una selección de trabajos y ejercicios que irán creciendo conmigo.</p>
+            <div><span class="eyebrow">02 / Tecnologías</span><h2>Con qué trabajo</h2></div>
+            <p>Tecnologías que he usado durante mi formación</p>
+          </div>
+          <div class="stack">
+            <article class="stack-group">
+              <h3>Frontend</h3>
+              <ul><li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>Diseño responsive</li><li>Accesibilidad web</li></ul>
+            </article>
+            <article class="stack-group">
+              <h3>Backend</h3>
+              <ul><li>Java (POO)</li><li>PHP</li></ul>
+            </article>
+            <article class="stack-group">
+              <h3>Bases de datos</h3>
+              <ul><li>Bases de datos relacionales</li><li>SQL</li></ul>
+            </article>
+            <article class="stack-group">
+              <h3>Herramientas</h3>
+              <ul><li>Git</li><li>GitHub</li><li>GitHub Actions</li><li>Pull requests</li></ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="formacion" class="reveal">
+        <div class="container">
+          <div class="section-heading">
+            <div><span class="eyebrow">03 / Formación</span><h2>Educación y práctica</h2></div>
+          </div>
+          <div class="timeline">
+            <article class="timeline-item">
+              <span class="timeline-dot"></span>
+              <span class="timeline-date">2.º CURSO · EN CURSO</span>
+              <h3>CFGS Desarrollo de Aplicaciones Web</h3>
+              <p>Desarrollo web full stack, bases de datos, programación orientada a objetos y trabajo en equipo con Git. Actualmente desarrollo el Proyecto Intermodular.</p>
+            </article>
+            <article class="timeline-item">
+              <span class="timeline-dot"></span>
+              <span class="timeline-date">1.er CURSO</span>
+              <h3>Fundamentos de programación y web</h3>
+              <p>Bases de programación, interfaces responsive con HTML y CSS, JavaScript, y primeros proyectos con Java y PHP.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="proyectos" class="reveal">
+        <div class="container">
+          <div class="section-heading">
+            <div><span class="eyebrow">04 / Proyectos</span><h2>Trabajo realizado</h2></div>
+            <p>Código abierto en GitHub y documentación técnica</p>
           </div>
           <div class="projects">
-            <article class="project"><span class="project-number">01 —</span><h3>Portfolio personal</h3><p>Un espacio para mostrar mi evolución, mis intereses y los proyectos que vaya desarrollando.</p><div class="tags"><span>HTML</span><span>CSS</span><span>GitHub Pages</span></div></article>
-            <article class="project"><span class="project-number">02 —</span><h3>Próximo proyecto</h3><p>Una nueva idea está tomando forma. Aquí podrás descubrirla muy pronto.</p><div class="tags"><span>En desarrollo</span></div></article>
-            <article class="project"><span class="project-number">03 —</span><h3>Próximo proyecto</h3><p>Experimentar, probar y compartir: el siguiente reto empieza aquí.</p><div class="tags"><span>En desarrollo</span></div></article>
+            <article class="project">
+              <span class="project-number">01</span>
+              <h3>Portfolio personal</h3>
+              <p>Sitio web estático, responsive y accesible, con tema claro/oscuro. Desplegado automáticamente en GitHub Pages con GitHub Actions en cada cambio sobre la rama principal.</p>
+              <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>GitHub Actions</span></div>
+              <div class="project-links">
+                <a href="https://github.com/catpop55/Portfolio" target="_blank" rel="noopener noreferrer">Repositorio <span aria-hidden="true">↗</span></a>
+                <a href="#inicio">Ver sitio</a>
+              </div>
+            </article>
+            <article class="project">
+              <span class="project-number">02</span>
+              <h3>Análisis de flujos de trabajo</h3>
+              <p>Estudio técnico comparando modelos de flujo de trabajo con Git en equipos de desarrollo, documentado junto con la arquitectura de despliegue del proyecto.</p>
+              <div class="tags"><span>Git</span><span>Flujo de trabajo</span><span>Documentación</span></div>
+              <div class="project-links">
+                <a href="docs/flujo-de-trabajo.pdf" target="_blank" rel="noopener noreferrer">Leer documento (PDF) <span aria-hidden="true">↗</span></a>
+              </div>
+            </article>
           </div>
+          <p class="projects-note">Más proyectos en <a href="https://github.com/catpop55?tab=repositories" target="_blank" rel="noopener noreferrer">mi perfil de GitHub</a></p>
         </div>
       </section>
 
-      <section class="container contact" id="contacto">
-        <div><span class="eyebrow">04 / Contacto</span><h2>¿Hablamos de una idea?</h2></div>
-        <div><p>Estoy abierto a conocer gente, aprender de nuevos retos y colaborar en proyectos interesantes.</p><a class="button primary" href="https://github.com/catpop55/Portfolio" target="_blank" rel="noreferrer">Visitar GitHub <span aria-hidden="true">&nbsp;↗</span></a></div>
+      <section class="container contact reveal" id="contacto">
+        <div>
+          <span class="eyebrow">05 / Contacto</span>
+          <h2>Trabajemos juntos</h2>
+          <p>Estoy disponible para realizar prácticas o incorporarme como desarrollador web junior. Quedo a su disposición para ampliar información o concertar una entrevista.</p>
+        </div>
+        <ul class="contact-list">
+          <li><span>Email</span><a href="mailto:cata_18_55@hotmail.com">cata_18_55@hotmail.com</a><button class="copy-email" type="button" data-copy="cata_18_55@hotmail.com">Copiar</button></li>
+          <li><span>GitHub</span><a href="https://github.com/catpop55" target="_blank" rel="noopener noreferrer">github.com/catpop55</a></li>
+          <!-- TODO: añade tu LinkedIn:
+          <li><span>LinkedIn</span><a href="https://www.linkedin.com/in/TU-USUARIO/" target="_blank" rel="noopener noreferrer">linkedin.com/in/TU-USUARIO</a></li> -->
+        </ul>
+        <!-- TODO: cuando tengas el CV, guárdalo como cv/Catalin_Mihai_Pop_CV.pdf y descomenta:
+        <a class="button primary" href="cv/Catalin_Mihai_Pop_CV.pdf" download>Descargar CV (PDF)</a> -->
       </section>
     </main>
 
     <footer>
-      <div class="container footer-inner"><span>© 2026 Catalin Mihai Pop</span><span>Hecho con curiosidad <3</span></div>
+      <div class="container footer-inner"><span>© 2026 Catalin Mihai Pop</span><span>Desarrollador de aplicaciones web</span></div>
     </footer>
-    <script src="script.js"></script>
   </body>
 </html>
