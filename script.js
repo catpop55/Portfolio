@@ -2,15 +2,24 @@ const root = document.documentElement;
 
 const storage = {
   get(key) {
-    try { return localStorage.getItem(key); } catch { return null; }
+    try {
+      return localStorage.getItem(key);
+    } catch {
+      return null;
+    }
   },
   set(key, value) {
-    try { localStorage.setItem(key, value); } catch { /* sin almacenamiento */ }
-  }
+    try {
+      localStorage.setItem(key, value);
+    } catch {
+      /* sin almacenamiento */
+    }
+  },
 };
 
 const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
-root.dataset.theme = storage.get('portfolio-theme') || (prefersLight ? 'light' : 'dark');
+root.dataset.theme =
+  storage.get('portfolio-theme') || (prefersLight ? 'light' : 'dark');
 
 document.addEventListener('DOMContentLoaded', () => {
   const themeToggle = document.querySelector('.theme-toggle');
@@ -25,7 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const isLight = root.dataset.theme === 'light';
       themeToggle.textContent = isLight ? '☾' : '☼';
       themeToggle.setAttribute('aria-pressed', String(isLight));
-      themeToggle.setAttribute('aria-label', isLight ? 'Cambiar a tema oscuro' : 'Cambiar a tema claro');
+      themeToggle.setAttribute(
+        'aria-label',
+        isLight ? 'Cambiar a tema oscuro' : 'Cambiar a tema claro',
+      );
     };
 
     updateThemeButton();
@@ -43,9 +55,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const setMenu = (open) => {
       menu.classList.toggle('is-open', open);
       menuToggle.setAttribute('aria-expanded', String(open));
-      menuToggle.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+      menuToggle.setAttribute(
+        'aria-label',
+        open ? 'Cerrar menú' : 'Abrir menú',
+      );
     };
-    menuToggle.addEventListener('click', () => setMenu(!menu.classList.contains('is-open')));
+    menuToggle.addEventListener('click', () =>
+      setMenu(!menu.classList.contains('is-open')),
+    );
     menu.addEventListener('click', (event) => {
       if (event.target.closest('a')) setMenu(false);
     });
@@ -55,9 +72,11 @@ document.addEventListener('DOMContentLoaded', () => {
         menuToggle.focus();
       }
     });
-    window.matchMedia('(min-width: 761px)').addEventListener('change', (event) => {
-      if (event.matches) setMenu(false);
-    });
+    window
+      .matchMedia('(min-width: 761px)')
+      .addEventListener('change', (event) => {
+        if (event.matches) setMenu(false);
+      });
   }
 
   // Barra de progreso de lectura y sombra del header al hacer scroll.
@@ -66,25 +85,32 @@ document.addEventListener('DOMContentLoaded', () => {
   let ticking = false;
   const updateScroll = () => {
     const max = document.documentElement.scrollHeight - window.innerHeight;
-    if (progress) progress.style.transform = `scaleX(${max > 0 ? Math.min(window.scrollY / max, 1) : 0})`;
+    if (progress)
+      progress.style.transform = `scaleX(${max > 0 ? Math.min(window.scrollY / max, 1) : 0})`;
     if (header) header.classList.toggle('is-scrolled', window.scrollY > 10);
     ticking = false;
   };
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      ticking = true;
-      window.requestAnimationFrame(updateScroll);
-    }
-  }, { passive: true });
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(updateScroll);
+      }
+    },
+    { passive: true },
+  );
   window.addEventListener('resize', updateScroll, { passive: true });
   updateScroll();
 
   // Aparición escalonada de tarjetas dentro de cada sección.
-  document.querySelectorAll('.stack-group, .project, .timeline-item, .fact').forEach((item) => {
-    const siblings = [...item.parentElement.children];
-    item.style.setProperty('--i', siblings.indexOf(item));
-    item.classList.add('stagger');
-  });
+  document
+    .querySelectorAll('.stack-group, .project, .timeline-item, .fact')
+    .forEach((item) => {
+      const siblings = [...item.parentElement.children];
+      item.style.setProperty('--i', siblings.indexOf(item));
+      item.classList.add('stagger');
+    });
 
   // Copiar el email con un clic.
   document.querySelectorAll('.copy-email').forEach((button) => {
@@ -107,14 +133,17 @@ document.addEventListener('DOMContentLoaded', () => {
   // Aparición suave de las secciones al hacer scroll.
   const revealElements = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries, revealObserver) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
+    const observer = new IntersectionObserver(
+      (entries, revealObserver) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 },
+    );
     revealElements.forEach((element) => observer.observe(element));
   } else {
     revealElements.forEach((element) => element.classList.add('is-visible'));
@@ -124,17 +153,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const sections = [...document.querySelectorAll('main section[id]')];
   const navigationLinks = [...document.querySelectorAll('nav a[href^="#"]')];
   if ('IntersectionObserver' in window && sections.length) {
-    const sectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        navigationLinks.forEach((link) => {
-          const active = link.getAttribute('href') === `#${entry.target.id}`;
-          link.classList.toggle('is-active', active);
-          if (active) link.setAttribute('aria-current', 'page');
-          else link.removeAttribute('aria-current');
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          navigationLinks.forEach((link) => {
+            const active = link.getAttribute('href') === `#${entry.target.id}`;
+            link.classList.toggle('is-active', active);
+            if (active) link.setAttribute('aria-current', 'page');
+            else link.removeAttribute('aria-current');
+          });
         });
-      });
-    }, { rootMargin: '-35% 0px -55% 0px' });
+      },
+      { rootMargin: '-35% 0px -55% 0px' },
+    );
     sections.forEach((section) => sectionObserver.observe(section));
   }
 
@@ -145,8 +177,14 @@ document.addEventListener('DOMContentLoaded', () => {
   topButton.textContent = '↑';
   topButton.setAttribute('aria-label', 'Volver arriba');
   document.body.append(topButton);
-  window.addEventListener('scroll', () => {
-    topButton.classList.toggle('is-visible', window.scrollY > 500);
-  }, { passive: true });
-  topButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  window.addEventListener(
+    'scroll',
+    () => {
+      topButton.classList.toggle('is-visible', window.scrollY > 500);
+    },
+    { passive: true },
+  );
+  topButton.addEventListener('click', () =>
+    window.scrollTo({ top: 0, behavior: 'smooth' }),
+  );
 });
