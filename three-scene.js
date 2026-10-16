@@ -1,21 +1,21 @@
 // Escena 3D de fondo para toda la página. Three.js se carga bajo demanda;
 // si falla (sin WebGL o sin red), se elimina el canvas y la página queda igual.
-const canvas = document.querySelector(".bg-3d");
+const canvas = document.querySelector('.bg-3d');
 const reducedMotion = window.matchMedia(
-  "(prefers-reduced-motion: reduce)",
+  '(prefers-reduced-motion: reduce)',
 ).matches;
 
 async function start() {
   if (!canvas) return;
 
   const THREE =
-    await import("https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js");
+    await import('https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js');
 
   const renderer = new THREE.WebGLRenderer({
     canvas,
     alpha: true,
     antialias: true,
-    powerPreference: "low-power",
+    powerPreference: 'low-power',
   });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.75));
 
@@ -54,12 +54,12 @@ async function start() {
   }
   const pointsGeometry = new THREE.BufferGeometry();
   pointsGeometry.setAttribute(
-    "position",
+    'position',
     new THREE.BufferAttribute(positions, 3),
   );
-  pointsGeometry.setAttribute("aSize", new THREE.BufferAttribute(sizes, 1));
-  pointsGeometry.setAttribute("aPhase", new THREE.BufferAttribute(phases, 1));
-  pointsGeometry.setAttribute("aMix", new THREE.BufferAttribute(mixes, 1));
+  pointsGeometry.setAttribute('aSize', new THREE.BufferAttribute(sizes, 1));
+  pointsGeometry.setAttribute('aPhase', new THREE.BufferAttribute(phases, 1));
+  pointsGeometry.setAttribute('aMix', new THREE.BufferAttribute(mixes, 1));
 
   const pointsMaterial = new THREE.ShaderMaterial({
     transparent: true,
@@ -209,7 +209,7 @@ async function start() {
   const knotColors = new Float32Array(
     knotGeometry.attributes.position.count * 3,
   );
-  knotGeometry.setAttribute("color", new THREE.BufferAttribute(knotColors, 3));
+  knotGeometry.setAttribute('color', new THREE.BufferAttribute(knotColors, 3));
   const knot = new THREE.Mesh(
     knotGeometry,
     new THREE.MeshBasicMaterial({
@@ -273,10 +273,10 @@ async function start() {
 
   const applyTheme = () => {
     const styles = getComputedStyle(document.documentElement);
-    ["--accent", "--accent-2", "--accent-3"].forEach((name, i) =>
-      palette[i].set(styles.getPropertyValue(name).trim() || "#b8f36b"),
+    ['--accent', '--accent-2', '--accent-3'].forEach((name, i) =>
+      palette[i].set(styles.getPropertyValue(name).trim() || '#b8f36b'),
     );
-    isLight = document.documentElement.dataset.theme === "light";
+    isLight = document.documentElement.dataset.theme === 'light';
     pointsMaterial.blending = isLight
       ? THREE.NormalBlending
       : THREE.AdditiveBlending;
@@ -287,11 +287,11 @@ async function start() {
   applyTheme();
   new MutationObserver(applyTheme).observe(document.documentElement, {
     attributes: true,
-    attributeFilter: ["data-theme"],
+    attributeFilter: ['data-theme'],
   });
 
   // ---------- Tamaño ----------
-  const heroCard = document.querySelector(".hero-card");
+  const heroCard = document.querySelector('.hero-card');
   const resize = () => {
     vw = window.innerWidth;
     vh = window.innerHeight;
@@ -304,7 +304,7 @@ async function start() {
     pointsMaterial.uniforms.uW.value = vw * k * 1.9;
     pointsMaterial.uniforms.uH.value = viewHeightAtZero * 1.8;
   };
-  window.addEventListener("resize", resize, { passive: true });
+  window.addEventListener('resize', resize, { passive: true });
   new ResizeObserver(() => {
     docHeight = document.documentElement.scrollHeight;
   }).observe(document.body);
@@ -314,9 +314,9 @@ async function start() {
   const pointer = { x: 0, y: 0 };
   const current = { x: 0, y: 0 };
   const mouse = { x: 999, y: 999, active: false };
-  if (window.matchMedia("(pointer: fine)").matches) {
+  if (window.matchMedia('(pointer: fine)').matches) {
     window.addEventListener(
-      "pointermove",
+      'pointermove',
       (event) => {
         pointer.x = (event.clientX / vw - 0.5) * 2;
         pointer.y = (event.clientY / vh - 0.5) * 2;
@@ -326,7 +326,7 @@ async function start() {
       },
       { passive: true },
     );
-    document.addEventListener("pointerleave", () => {
+    document.addEventListener('pointerleave', () => {
       mouse.active = false;
     });
   }
@@ -405,11 +405,11 @@ async function start() {
     renderer.render(scene, camera);
   };
 
-  canvas.classList.add("is-ready");
+  canvas.classList.add('is-ready');
 
   if (reducedMotion) {
     render();
-    window.addEventListener("resize", () => render(), { passive: true });
+    window.addEventListener('resize', () => render(), { passive: true });
     return;
   }
 
@@ -421,7 +421,7 @@ async function start() {
   const resume = () => {
     if (!frame && !document.hidden) frame = requestAnimationFrame(loop);
   };
-  document.addEventListener("visibilitychange", resume);
+  document.addEventListener('visibilitychange', resume);
   resume();
 }
 
